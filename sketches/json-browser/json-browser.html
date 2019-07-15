@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<script src="http://lmcnulty.gitlab.io/granulated-sugar/granulated-sugar.js"></script>
+<style>
+	body {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	h2 {
+		margin-top: 2px;
+		margin-bottom: 2px;	
+	}
+	.personContainer {
+		border-radius: 5px;
+		padding: 15px;
+		width: 600px;
+		background-color: whitesmoke;
+		margin-bottom: 10px;
+		margin-right: 10px;
+		flex: 1;
+		min-width: 30%;
+		border: 1px solid lightgrey;
+	}
+	td {
+		padding-right: 10px;	
+	}
+</style>
+</head>
+<body>
+
+<script>
+let cr = create;
+
+function numToMonthName(num) {
+	switch (num) {
+		case 1:
+			return "January";
+		case 2:
+			return "February";
+		case 3:
+			return "March";
+		case 4:
+			return "April";
+		case 5:
+			return "May";
+		case 6:
+			return "June";
+		case 7:
+			return "July";
+		case 8:
+			return "August";
+		case 9:
+			return "September";
+		case 10:
+			return "October";
+		case 11:
+			return "November";
+		case 12:
+			return "December";	
+	}	
+}
+
+function formatItems() {
+	let returnString = "";
+	for (let i = 0; i < arguments.length; i++) {
+		if (arguments[i] != null && arguments[i] != "" && arguments[i] != "undefined") {
+			returnString += arguments[i] + " "
+		}
+	}	
+	return returnString;
+}
+
+function yearString(year) {
+	if (year != null) {
+		return (", " + year)
+	}
+	return null;
+}
+
+function makePersonDisplay(entry) {
+	let person = entry.person;
+	let doc = entry.document;
+	if (person.names[0] == null) {
+		person.names[0] = {firstName: "Unknown"}
+	}
+	return create("div", {class: "personContainer"}, [
+		cr("h2", formatItems(person.names[0].firstName, person.names[0].lastName)),
+		cr("h3", "Personal Information"),
+	 	cr("table", [
+			cr("tr", [cr("td", "Origin"), cr("td", formatItems(person.origin))]),
+			cr("tr", [cr("td", "Race"), cr("td", formatItems(person.race))]),
+			cr("tr", [cr("td", "Sex"), cr("td", formatItems(person.sex))]),
+			cr("tr", [cr("td", "Tribe"), cr("td", formatItems(person.tribe))]),
+			cr("tr", [cr("td", "Kind of Enslavement"), cr("td", formatItems(person.kindOfEnslavement))]),
+			cr("tr", [cr("td", "Vocation"), cr("td", formatItems(person.vocation))]),
+	 	]),
+	 	cr("h3", "Document"),
+	 	cr("table", [
+			cr("tr", [cr("td", "Citation"), cr("td", String(doc.citation))]),
+			cr("tr", [
+				cr("td", "Location"), 
+				cr("td", formatItems(doc.nationalContext, doc.colonyState, "-", doc.stringLocation))
+			]),
+			cr("tr", [
+				cr("td", "Date"), 
+				cr("td", formatItems(numToMonthName(doc.date.month), doc.day, yearString(doc.year)))
+			]),
+			cr("tr", [cr("td", "Record Type"), cr("td", String(doc.recordType))]),
+			cr("tr", [cr("td", "Source Type"), cr("td", String(doc.sourceType))]),
+	 	]),
+	 	cr("p", entry.additionalInformation),
+	 	cr("p", entry.researcherNotes)
+	 ]);
+}
+
+
+let entries = [];
+getRequest("entries.json", (responseText) => {
+	entries = JSON.parse(responseText);
+	for (let i = 0; i < 20; i++) {
+		document.body.appendChild(makePersonDisplay(entries[Math.floor(Math.random()*entries.length)]));
+	}
+});
+
+
+
+
+</script>
+</body>
+</html>

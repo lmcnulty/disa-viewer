@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"> 
+        
+        <title>DISA</title>
+        
+
+        <!-- <link rel="stylesheet" type="text/css" href="/projects/disa/static/lib/fontawesome-free-5.1.1-web/css/all.min.css"> -->
+
+        <link rel="stylesheet" type="text/css" href="/projects/disa/static/lib/jquery-ui-themes-1.12.1/themes/base/jquery-ui.min.css">
+
+        <style type="text/css">
+            .navbar-nav > li{
+              margin-right:30px;
+            }
+        </style>
+        
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" 
+          href="/projects/disa/static/lib/slickgrid/css/smoothness/jquery-ui-1.11.3.custom.css" 
+          type="text/css"/>
+    <link rel="stylesheet" href="/projects/disa/static/lib/slickgrid/slick.grid.css" type="text/css"/>
+    <link rel="stylesheet" href="/projects/disa/static/css/browse.css" type="text/css"/>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+            <a class="navbar-brand text-white" href="/projects/disa/">Database of Indigenous Slavery in the Americas</a>
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/projects/disa/login">login</a>
+                </li>
+                
+            </ul>
+        </nav>
+        
+        
+        
+	<header>
+		<h1>Browse the database</h1>
+		<hr>
+		<div class="instructions">
+			<p>Find out more about an entry by clicking on the <img src="/projects/disa/static/img/info.png"> icon on left-hand side of each entry.</p>
+			<p>Search each entry by sorting the column header. You can search multiple columns at one time. (Please note that you need to delete the original search to reset the form)</p>
+		</div>
+	</header>
+	
+	<div id="grid-container">
+		<div id="myGrid" style="width:100%; height:100%;"></div>
+	</div>
+	<div class="info-box">
+		<h3>Acknowledgements</h3>
+
+		<p>DISA has been generously funded and supported by the following entities:</p>
+		<ul>
+			<li>Population Studies and Training Center, Brown University</li>
+			<li>Social Sciences Research Institute, Brown University</li>
+			<li>Office of the Vice President for Research, Brown University</li>
+			<li>Center for Digital Scholarship, Brown University Library</li>
+		</ul>
+	</div>
+
+
+        <script src="/projects/disa/static/lib/jquery/jquery-3.3.1.min.js"></script>
+        <script
+            src="/projects/disa/static/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+        <script src="/projects/disa/static/lib/bootstrap-4.1.2-dist/js/bootstrap.min.js"></script>
+        <script src="/projects/disa/static/lib/fontawesome-free-5.1.1-web/js/all.js"></script>
+        
+<script src="/projects/disa/static/lib/slickgrid/lib/firebugx.js"></script>
+<script src="/projects/disa/static/lib/slickgrid/lib/jquery-1.11.2.min.js"></script>
+<script src="/projects/disa/static/lib/slickgrid/lib/jquery-ui-1.11.3.min.js"></script>
+<script src="/projects/disa/static/lib/slickgrid/lib/jquery.event.drag-2.3.0.js"></script>
+<script src="/projects/disa/static/lib/slickgrid/slick.core.js"></script>
+<script src="/projects/disa/static/lib/slickgrid/slick.dataview.js"></script>
+<script src="/projects/disa/static/lib/slickgrid/slick.grid.js"></script>
+<script src="/projects/disa/static/js/granulated-sugar.js"></script>
+<script src="/projects/disa/static/js/browse.js"></script>
+
+    </body>
+</html>
